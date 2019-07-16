@@ -9,31 +9,77 @@
     </modules>
 
     <parent>
-        <groupId>com.shuidihuzhu.infra</groupId>
-        <artifactId>parent</artifactId>
-        <version>1.33</version>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
     </parent>
 
+    <groupId>com.github.osinfra</groupId>
+    <artifactId>dynamic-config</artifactId>
+    <version>1.0.0</version>
 
-    <artifactId>spring-cloud-shuidihuzhu-config</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <scm>
+        <url>git@github.com:OSInfra/dynamic-config.git</url>
+        <connection>scm:git@github.com:OSInfra/dynamic-config.git</connection>
+        <developerConnection>scm:git@github.com:OSInfra/dynamic-config.git</developerConnection>
+        <tag>master</tag>
+    </scm>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>michaelfreeman</name>
+            <url>http://www.wowfree.cn/</url>
+            <email>michaelfreeman0725@gmail.com</email>
+        </developer>
+    </developers>
 
     <properties>
+        <java.version>1.8</java.version>
+        <spring-cloud.version>Greenwich.SR2</spring-cloud.version>
+        <spring-boot.version>2.1.6.RELEASE</spring-boot.version>
         <guava.version>27.0.1-jre</guava.version>
-        <gson.version>2.8.5</gson.version>
+        <common-lang3.version>3.9</common-lang3.version>
+        <common-collection.version>3.2.2</common-collection.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-parent</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
                 <version>${guava.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.google.code.gson</groupId>
-                <artifactId>gson</artifactId>
-                <version>${gson.version}</version>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${common-lang3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-collections</groupId>
+                <artifactId>commons-collections</artifactId>
+                <version>${common-collection.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -97,11 +143,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-test-support</artifactId>
-            <scope>test</scope>
-        </dependency>
 
         <!-- slf4j -->
         <dependency>
@@ -124,6 +165,34 @@
             <version>2.11.2</version>
             <optional>true</optional>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+        </dependency>
+
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.1.1.RELEASE</version>
+            </plugin>
+        </plugins>
+    </build>
 </project>

@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.shuidihuzhu.infra.configuration.ConfigAutoConfiguration
+com.springcloud.config.client.configuration.ConfigAutoConfiguration
