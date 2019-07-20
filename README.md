@@ -1,7 +1,7 @@
 # dynamic-config
 
 ## 简介
-cloud-config基于spring cloud config以git为配置中心，实现动态更新的功能，而不需要进行手动refresh或者引入MQ。
+dynamic-config基于spring cloud config以git为配置中心，实现动态更新的功能，而不需要进行手动refresh或者引入MQ。
 
 ## 特征
 - 基于springcloud项目
